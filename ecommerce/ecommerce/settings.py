@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import environ
+<<<<<<< HEAD
+=======
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+>>>>>>> de27557b60dcd4775d2a575b05dfca35264c013a
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +38,11 @@ env.read_env(str(BASE_DIR / '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = env.bool('DEBUG', default=False)
+=======
+DEBUG = env('DEBUG')
+>>>>>>> de27557b60dcd4775d2a575b05dfca35264c013a
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
@@ -88,7 +102,20 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+<<<<<<< HEAD
 DATABASES = {'default': env.db('DATABASE_URL')}
+=======
+DATABASES = {
+    'default': {
+        'ENGINE': env('ENGINE'),
+        'NAME': env('NAME'),
+        "USER": env('USER'),
+        "PASSWORD": env('PASSWORD'),
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+>>>>>>> de27557b60dcd4775d2a575b05dfca35264c013a
 
 
 # Password validation
