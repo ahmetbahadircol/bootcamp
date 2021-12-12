@@ -1,4 +1,5 @@
 from django_filters import rest_framework as filters
+<<<<<<< HEAD
 from django.utils.translation import gettext_lazy as _
 from orders.models import *
 
@@ -64,3 +65,42 @@ class OrderItemFilter(filters.FilterSet):
     class Meta:
         model = OrderItem
         fields = ["order", "product", "price"]
+=======
+
+from orders.models import OrderItem, Order, OrderBankAccount, ShippingAddress, BillingAddress
+
+
+class OrderItemFilter(filters.FilterSet):
+
+    class Meta:
+        model = OrderItem
+        fields = ("order", "product")
+
+
+class OrderFilter(filters.FilterSet):
+
+    class Meta:
+        model = Order
+        fields = ("customer", "status")
+
+
+class BillingAddressFilter(filters.FilterSet):
+
+    class Meta:
+        model = BillingAddress
+        fields = ("full_name", "city")
+
+
+class ShippingAddressFilter(filters.FilterSet):
+
+    class Meta:
+        model = ShippingAddress
+        fields = ("full_name", "city")
+
+
+class OrderBankAccountFilter(filters.FilterSet):
+
+    class Meta:
+        model = OrderBankAccount
+        fields = ("name", "bank_name", "order")
+>>>>>>> 3ae8a86dc6e9202ccbccfd600c5859e6d6e3412d

@@ -1,9 +1,28 @@
 from rest_framework import viewsets
 
 from core.mixins import DetailedViewSetMixin
+<<<<<<< HEAD
 from orders.filters import *
 from orders.models import Order
 from orders.serializers import *
+=======
+from orders.filters import OrderItemFilter, OrderFilter, BillingAddressFilter, ShippingAddressFilter, \
+    OrderBankAccountFilter
+from orders.models import OrderItem, Order, BillingAddress, ShippingAddress, OrderBankAccount
+from orders.serializers import OrderItemSerializer, OrderSerializer, OrderItemDetailedSerializer, \
+    OrderDetailedSerializer, BillingAddressSerializer, ShippingAddressSerializer, BillingAddressDetailedSerializer, \
+    ShippingAddressDetailedSerializer, OrderBankAccountSerializer, OrderBankAccountDetailedSerializer
+
+
+class OrderItemViewSet(DetailedViewSetMixin, viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
+    filterset_class = OrderItemFilter
+    serializer_action_classes = {
+        "detailed_list": OrderItemDetailedSerializer,
+        "detailed": OrderItemDetailedSerializer,
+    }
+>>>>>>> 3ae8a86dc6e9202ccbccfd600c5859e6d6e3412d
 
 
 class OrderViewSet(DetailedViewSetMixin, viewsets.ModelViewSet):
@@ -44,6 +63,7 @@ class OrderBankAccountViewSet(DetailedViewSetMixin, viewsets.ModelViewSet):
         "detailed_list": OrderBankAccountDetailedSerializer,
         "detailed": OrderBankAccountDetailedSerializer,
     }
+<<<<<<< HEAD
 
 
 class OrderItemViewSet(DetailedViewSetMixin, viewsets.ModelViewSet):
@@ -54,3 +74,5 @@ class OrderItemViewSet(DetailedViewSetMixin, viewsets.ModelViewSet):
         "detailed_list": OrderItemDetailedSerializer,
         "detailed": OrderItemDetailedSerializer,
     }
+=======
+>>>>>>> 3ae8a86dc6e9202ccbccfd600c5859e6d6e3412d

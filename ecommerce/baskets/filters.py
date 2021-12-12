@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db.models import Q
 from django_filters import rest_framework as filters
 from django.utils.translation import gettext_lazy as _
@@ -24,3 +25,22 @@ class BasketItemFilter(filters.FilterSet):
         model = BasketItem
         fields = ("basket", "product", "quantity", "price")
 
+=======
+from django_filters import rest_framework as filters
+
+from baskets.models import BasketItem, Basket
+
+
+class BasketItemFilter(filters.FilterSet):
+
+    class Meta:
+        model = BasketItem
+        fields = ("product", "quantity", "price")
+
+
+class BasketFilter(filters.FilterSet):
+
+    class Meta:
+        model = Basket
+        fields = ("customer", "status")
+>>>>>>> 3ae8a86dc6e9202ccbccfd600c5859e6d6e3412d
